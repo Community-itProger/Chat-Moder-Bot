@@ -1,10 +1,11 @@
-from keyboards import confirm_keyboard
+from keyboards import confirm_keyboard_markup
 from loader import dp, bot
 from aiogram import types
 
 
 @dp.message_handler(content_types=types.ContentTypes.NEW_CHAT_MEMBERS)
 async def new_chat_member(message: types.Message):
+    confirm_keyboard = await confirm_keyboard_markup(message)
     await bot.restrict_chat_member(
         chat_id=message.chat.id,
         user_id=message.from_user.id,
