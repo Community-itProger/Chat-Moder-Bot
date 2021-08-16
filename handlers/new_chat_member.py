@@ -8,7 +8,7 @@ async def new_chat_member(message: types.Message):
     confirm_keyboard = await confirm_keyboard_markup(message)
     await bot.restrict_chat_member(
         chat_id=message.chat.id,
-        user_id=message.from_user.id,
+        user_id=message.new_chat_members[0].id,
         can_send_messages=False,
         can_send_media_messages=False,
         can_send_other_messages=False,
